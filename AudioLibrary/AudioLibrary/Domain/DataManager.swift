@@ -54,6 +54,6 @@ extension Result {
   }
 }
 
-struct DataContainer<NestedData: Codable>: Decodable {
+struct DataContainer<NestedData: Decodable>: Decodable {
   let data: NestedData
 }
