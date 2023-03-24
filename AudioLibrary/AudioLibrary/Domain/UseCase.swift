@@ -59,20 +59,23 @@ enum Response<ModelType> {
 }
 
 class UseCase {
-  
+  fileprivate let dataManager: DataManagerTraits
+  init(dataManager: DataManagerTraits = AudioLibraryDataManager()) {
+    self.dataManager = dataManager
+  }
 }
 
-final class GetSongsList: NetworkUseCase {
+final class GetSongsList: UseCase, NetworkUseCase {
   typealias Request = Void
   typealias ResponseModel = [Song]
   
   func executeSync(_ request: Void, completion: @escaping (Response<[Song]>) -> Void) {
-    
+    dataManager.getSongs(onFetch: completion)
   }
 }
 
 
-final class DownloadSong: NetworkUseCase {
+final class DownloadSong: UseCase, NetworkUseCase {
   typealias Request = String
   typealias ResponseModel = Data
   

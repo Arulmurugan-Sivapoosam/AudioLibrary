@@ -15,7 +15,7 @@ enum NetworkError: Error{
 }
 
 class NetworkManager {
-  func getResponse<Response: Codable>(request: Request, onFetch: @escaping (Result<Response, NetworkError>) -> Void) {
+  func getResponse<Response: Decodable>(request: Request, onFetch: @escaping (Result<Response, NetworkError>) -> Void) {
     guard let request = request.urlRequest else { return onFetch(.failure(NetworkError.URLValidationFailed)) }
     URLSession.shared.dataTask(with: request) { data, response, error in
       if let error {

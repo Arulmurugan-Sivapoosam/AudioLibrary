@@ -8,5 +8,5 @@
 import Foundation
 
 class Song: Codable {
-  
+  let id, name, audioURL: String
 }

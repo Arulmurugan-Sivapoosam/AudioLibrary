@@ -8,13 +8,22 @@
 import Foundation
 
 protocol AudioLibraryNetworkWorkerTraits {
-  func getSongs(onFetch: @escaping (Result<[Song], Error>) -> Void)
+  func getSongs(onFetch: @escaping (Result<[Song], NetworkError>) -> Void)
   func downloadSong(withURL songURL: URL, onDownload: @escaping (Result<Data, Error>) -> Void)
 }
 
 final class AudioLibraryNetworkWorker: AudioLibraryNetworkWorkerTraits {
-  func getSongs(onFetch: @escaping (Result<[Song], Error>) -> Void) {
-    
+  private let networkManager: NetworkManager = .init()
+  
+  func getSongs(onFetch: @escaping (Result<[Song], NetworkError>) -> Void) {
+    networkManager.getResponse(request: .getSongs) { (result: Result<DataContainer<[Song]>, NetworkError>) in
+      switch result {
+      case .success(let songsModel):
+        onFetch(.success(songsModel.data))
+      case .failure(let error):
+        onFetch(.failure(error))
+      }
+    }
   }
   
   func downloadSong(withURL songURL: URL, onDownload: @escaping (Result<Data, Error>) -> Void) {
