@@ -24,6 +24,7 @@
 		CFBCF21429CCBB24009491DB /* BaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF21329CCBB24009491DB /* BaseClass.swift */; };
 		CFBCF21629CCBBBC009491DB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF21529CCBBBC009491DB /* Extensions.swift */; };
 		F706AA4129CDC83400DDE38F /* SongTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F706AA4029CDC83400DDE38F /* SongTableCell.swift */; };
+		F706AA4329CE034200DDE38F /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F706AA4229CE034200DDE38F /* ProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		CFBCF21329CCBB24009491DB /* BaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseClass.swift; sourceTree = "<group>"; };
 		CFBCF21529CCBBBC009491DB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F706AA4029CDC83400DDE38F /* SongTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableCell.swift; sourceTree = "<group>"; };
+		F706AA4229CE034200DDE38F /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			children = (
 				CFBCF21029CCB9B8009491DB /* SongListController.swift */,
 				F706AA4029CDC83400DDE38F /* SongTableCell.swift */,
+				F706AA4229CE034200DDE38F /* ProgressView.swift */,
 			);
 			path = SongList;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				CF97DC2E29CCB7C4005D500A /* SceneDelegate.swift in Sources */,
 				CF55794B29CD8341002AD4F7 /* HTTPRequest.swift in Sources */,
 				CF55794529CD7ADF002AD4F7 /* DataManager.swift in Sources */,
+				F706AA4329CE034200DDE38F /* ProgressView.swift in Sources */,
 				CF55794329CD7961002AD4F7 /* Model.swift in Sources */,
 				F706AA4129CDC83400DDE38F /* SongTableCell.swift in Sources */,
 			);

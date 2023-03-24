@@ -44,6 +44,18 @@ extension UIView {
     self.widthAnchor.constraint(equalToConstant: size.width).isActive = true
     self.heightAnchor.constraint(equalToConstant: size.height).isActive = true
   }
+  
+  func centerVertically(with view: UIView? = nil, offset: CGFloat = .zero) {
+    translatesAutoresizingMaskIntoConstraints = false
+    guard let secondView = view ?? self.superview else {return}
+    self.centerYAnchor.constraint(equalTo: secondView.centerYAnchor, constant: offset).isActive = true
+  }
+  
+  func centerHorizontally(with view: UIView? = nil, offset: CGFloat = .zero) {
+    translatesAutoresizingMaskIntoConstraints = false
+    guard let secondView = view ?? superview else {return}
+    self.centerXAnchor.constraint(equalTo: secondView.centerXAnchor, constant: offset).isActive = true
+  }
 }
 
 extension UITableViewCell {

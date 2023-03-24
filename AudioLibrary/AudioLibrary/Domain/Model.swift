@@ -60,7 +60,8 @@ extension Song {
     }
     
     downloadManager?.didDownload = { songData in
-    
+      self.state = .downloaded
+      self.didDownload?(songData)
     }
     
     downloadManager?.downloadData(from: audioURL)
