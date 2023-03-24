@@ -8,5 +8,18 @@
 import Foundation
 
 class Song: Codable {
+  internal init(id: String, name: String, audioURL: String) {
+    self.id = id
+    self.name = name
+    self.audioURL = audioURL
+  }
+  
   let id, name, audioURL: String
+ 
+  var state: State?
+  var songLocation: String?
+  
+  enum State {
+    case yetToDownload, downloaded, playing
+  }
 }

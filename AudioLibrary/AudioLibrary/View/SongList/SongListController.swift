@@ -13,6 +13,8 @@ final class SongListController: BaseController {
   private let getSongs: GetSongsList = .init()
   private var songs: [Song] = []
   
+  override var navigationTitle: String? {"Songs"}
+  
   override func layoutViews() {
     view.addSubview(tableView)
     tableView.alignEdges()
@@ -23,20 +25,27 @@ final class SongListController: BaseController {
     SongTableCell.register(to: tableView)
     tableView.dataSource = self
     tableView.delegate = self
+    tableView.separatorStyle = .none
   }
   
   override func updateData() {
-    getSongs.execute(()) { [weak self] response in
-      guard let self else {return}
-      switch response {
-      case .network(let songs), .local(let songs):
-        self.songs = songs
-      case .failure(let error):
-        self.songs = []
-        self.show(error: error)
-      }
-      self.tableView.reloadData()
-    }
+    self.songs = [
+      Song(id: "0", name: "song 1", audioURL: "https://drive.google.com/uc?export=download&id=1vGk9m-A5JZZCgc23imDOfVfIPFOLVQcj"),
+      Song(id: "1", name: "song 2", audioURL: "https://drive.google.com/uc?export=download&id=1vGk9m-A5JZZCgc23imDOfVfIPFOLVQcj"),
+      Song(id: "2", name: "song 3", audioURL: "https://drive.google.com/uc?export=download&id=1vGk9m-A5JZZCgc23imDOfVfIPFOLVQcj"),
+      Song(id: "3", name: "song 4", audioURL: "https://drive.google.com/uc?export=download&id=1vGk9m-A5JZZCgc23imDOfVfIPFOLVQcj")
+    ]
+//    getSongs.execute(()) { [weak self] response in
+//      guard let self else {return}
+//      switch response {
+//      case .network(let songs), .local(let songs):
+//        self.songs = songs
+//      case .failure(let error):
+//        self.songs = []
+//        self.show(error: error)
+//      }
+//      self.tableView.reloadData()
+//    }
   }
   
   func show(error: Error) {
@@ -54,5 +63,5 @@ extension SongListController: UITableViewDataSource, UITableViewDelegate {
     return songCell
   }
   
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 90 }
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 170 }
 }

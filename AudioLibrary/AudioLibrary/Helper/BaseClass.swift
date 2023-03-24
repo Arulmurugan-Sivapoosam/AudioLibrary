@@ -79,30 +79,6 @@ class BaseTableCell: UITableViewCell {
   func addActions() {}
 }
 
-enum TextFieldType {
-  case primary, secondary, custom(UIColor)
-  
-  var textColor: UIColor {
-    switch self {
-    case .custom(let customColor): return customColor
-    case .primary: return .black
-    case .secondary: return .gray
-    }
-  }
-}
-
-final class BaseLabel: UILabel {
-  init(labelType: TextFieldType, font: UIFont = .systemFont(ofSize: 14)) {
-    super.init(frame: .zero)
-    self.font = font
-    self.textColor = labelType.textColor
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-}
-
 final class BaseButton: UIButton {
   var didPerformTapAction: (() -> Void)?
   init() {
