@@ -19,10 +19,11 @@ final class SongTableCell: BaseTableCell {
   func update(song: Song) {
     self.song = song
     songNameLabel.text = song.name
+    updateState(of: song)
   }
   
   override func layoutViews() {
-    addSubview(songCardView)
+    contentView.addSubview(songCardView)
     songCardView.alignEdges(offset: 7)
     
     songCardView.addSubview(songNameLabel)
@@ -38,7 +39,7 @@ final class SongTableCell: BaseTableCell {
   
   override func addActions() {
     songActionButton.didPerformTapAction = {
-      
+      self.changeState()
     }
   }
   
@@ -51,5 +52,45 @@ final class SongTableCell: BaseTableCell {
     songCardView.layer.cornerRadius = 7
     songNameLabel.font = .systemFont(ofSize: 25)
     selectionStyle = .none
+  }
+}
+
+// MARK: - State handling
+private extension SongTableCell {
+  func updateState(of song: Song) {
+    songActionButton.setImage(.init(named: song.state.icon), for: .normal)
+    listenToDownloadIfNeeded()
+  }
+  
+  func changeState() {
+    song?.updateState()
+    listenToDownloadIfNeeded()
+  }
+  
+  func listenToDownloadIfNeeded() {
+    guard let song,
+      song.state == .downloading else {
+      song?.didUpdateFraction = nil
+      return
+    }
+    update(downloadFraction: song.downloadedFraction)
+    song.didUpdateFraction = { fraction in
+      self.update(downloadFraction: fraction)
+    }
+  }
+  
+  func update(downloadFraction: Float) {
+    print("faction is", downloadFraction)
+  }
+}
+
+private extension Song.State {
+  var icon: String {
+    switch self {
+    case .yetToDownload: return "download"
+    case .downloaded: return "play"
+    case .playing: return "pause"
+    case .downloading: return ""
+    }
   }
 }
