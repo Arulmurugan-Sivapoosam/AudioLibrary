@@ -17,6 +17,10 @@ class BaseController: UIViewController {
     layoutViews()
     updateData()
     setColors()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     prepareNavigation()
   }
   

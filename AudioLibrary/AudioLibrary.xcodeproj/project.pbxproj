@@ -174,11 +174,10 @@
 		CFBCF20E29CCB989009491DB /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F77F046329CEDECD0094D15E /* CoreData */,
 				CF55794629CD7B3E002AD4F7 /* LocalWorker.swift */,
 				CF55794829CD7B50002AD4F7 /* NetworkWorker.swift */,
 				CF55794A29CD8341002AD4F7 /* HTTPRequest.swift */,
-				F745BA8F29CEB6CC007CE66A /* CoreData.swift */,
-				F77F046129CEC8530094D15E /* SongsCoreDataHelper.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -201,6 +200,15 @@
 				F745BA9129CEBA07007CE66A /* Constants.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		F77F046329CEDECD0094D15E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F745BA8F29CEB6CC007CE66A /* CoreData.swift */,
+				F77F046129CEC8530094D15E /* SongsCoreDataHelper.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
