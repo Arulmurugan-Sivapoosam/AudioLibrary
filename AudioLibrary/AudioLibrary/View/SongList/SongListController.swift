@@ -11,6 +11,7 @@ final class SongListController: BaseController {
   
   private let tableView: BaseTable = .init()
   private let loader: UIActivityIndicatorView = .init(style: .large)
+  private let errorLabel: UILabel = .init(frame: .zero)
   
   private let getSongs: GetSongsList = .init()
   private var songs: [Song] = []
@@ -33,6 +34,10 @@ final class SongListController: BaseController {
     view.addSubview(tableView)
     tableView.alignEdges()
     prepareTable()
+    
+    view.addSubview(errorLabel)
+    errorLabel.centerHorizontally()
+    errorLabel.centerVertically()
   }
   
   private func prepareTable() {
@@ -55,19 +60,23 @@ final class SongListController: BaseController {
       switch response {
       case .network(let songs), .local(let songs):
         self.songs = songs
-      case .failure(let error):
+      case .failure:
         self.songs = []
-        self.show(error: error)
       }
+      self.tableView.isHidden = self.songs.isEmpty
+      self.errorLabel.isHidden = !self.tableView.isHidden
       self.tableView.reloadData()
     }
+    errorLabel.text = "Something went wrong"
   }
   
-  func show(error: Error) {
-    
+  override func setColors() {
+    view.backgroundColor = .white
+    errorLabel.textColor = .black
   }
 }
 
+// MARK: - TableView methods
 extension SongListController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { songs.count }
