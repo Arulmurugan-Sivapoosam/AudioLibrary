@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 final class SongTableCell: BaseTableCell {
   
@@ -16,6 +17,7 @@ final class SongTableCell: BaseTableCell {
   private let progressView: ProgressView = .init()
   
   private var song: Song?
+  var performPlayer: ((AudioPlayer.Action) -> Void)?
   
   func update(song: Song) {
     self.song = song
@@ -64,17 +66,29 @@ final class SongTableCell: BaseTableCell {
 }
 
 // MARK: - State handling
-private extension SongTableCell {
+extension SongTableCell {
   func updateState(of song: Song) {
     songActionButton.setImage(.init(named: song.state.icon), for: .normal)
   }
   
-  func changeState() {
-    song?.updateState()
+  private func changeState() {
+    guard let song else {return}
+    switch song.state {
+    case .yetToDownload:
+      song.download()
+    case .downloaded, .paused:
+      self.song?.state = .playing
+      performPlayer?(.play(song))
+    case .playing:
+      self.song?.state = .paused
+      performPlayer?(.pause)
+    case .downloading: break
+    }
+    updateState(of: song)
     listenToDownloadIfNeeded()
   }
   
-  func listenToDownloadIfNeeded() {
+  private func listenToDownloadIfNeeded() {
     updateProgressViewState()
     guard let song,
       song.state == .downloading else { return }
@@ -88,11 +102,11 @@ private extension SongTableCell {
     }
   }
   
-  func update(downloadFraction: Float) {
-    progressView.update(fraction: downloadFraction == .zero ? 0.1 : downloadFraction)
+  private func update(downloadFraction: Float) {
+    progressView.update(fraction: downloadFraction)
   }
   
-  func updateProgressViewState() {
+  private func updateProgressViewState() {
     progressView.isHidden = song?.state != .downloading
     songActionButton.isHidden = song?.state == .downloading
   }
@@ -102,7 +116,7 @@ private extension Song.State {
   var icon: String {
     switch self {
     case .yetToDownload: return "download"
-    case .downloaded: return "play"
+    case .downloaded, .paused: return "play"
     case .playing: return "pause"
     case .downloading: return ""
     }
