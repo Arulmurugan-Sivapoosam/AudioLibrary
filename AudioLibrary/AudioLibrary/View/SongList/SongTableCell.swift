@@ -26,6 +26,11 @@ final class SongTableCell: BaseTableCell {
     listenToDownloadIfNeeded()
   }
   
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    progressView.update(fraction: .zero)
+  }
+  
   override func layoutViews() {
     contentView.addSubview(songCardView)
     songCardView.alignEdges(offset: 7)
