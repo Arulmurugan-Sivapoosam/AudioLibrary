@@ -41,23 +41,23 @@ final class SongListController: BaseController {
   }
   
   override func updateData() {
-    self.songs = [
-      Song(id: "0", name: "song 1", audioURL: "https://drive.google.com/uc?export=download&id=1vGk9m-A5JZZCgc23imDOfVfIPFOLVQcj"),
-      Song(id: "1", name: "song 2", audioURL: "https://drive.google.com/uc?export=download&id=1_4k-awx3oEI_iHF38pKcbIAkRpXF_3Sb"),
-      Song(id: "2", name: "song 3", audioURL: "https://drive.google.com/uc?export=download&id=1Ry36i7KBSHzZuSrSHrVXgNG0o-iqGP3v"),
-      Song(id: "3", name: "song 4", audioURL: "https://drive.google.com/uc?export=download&id=1BNmjLCyGd36p_pH_z7Ls9hSjP9-m2lR2")
-    ]
-//    getSongs.execute(()) { [weak self] response in
-//      guard let self else {return}
-//      switch response {
-//      case .network(let songs), .local(let songs):
-//        self.songs = songs
-//      case .failure(let error):
-//        self.songs = []
-//        self.show(error: error)
-//      }
-//      self.tableView.reloadData()
-//    }
+//    self.songs = [
+//      Song(id: "0", name: "song 1", audioURL: "https://drive.google.com/uc?export=download&id=1vGk9m-A5JZZCgc23imDOfVfIPFOLVQcj"),
+//      Song(id: "1", name: "song 2", audioURL: "https://drive.google.com/uc?export=download&id=1_4k-awx3oEI_iHF38pKcbIAkRpXF_3Sb"),
+//      Song(id: "2", name: "song 3", audioURL: "https://drive.google.com/uc?export=download&id=1Ry36i7KBSHzZuSrSHrVXgNG0o-iqGP3v"),
+//      Song(id: "3", name: "song 4", audioURL: "https://drive.google.com/uc?export=download&id=1BNmjLCyGd36p_pH_z7Ls9hSjP9-m2lR2")
+//    ]
+    getSongs.execute(()) { [weak self] response in
+      guard let self else {return}
+      switch response {
+      case .network(let songs), .local(let songs):
+        self.songs = songs
+      case .failure(let error):
+        self.songs = []
+        self.show(error: error)
+      }
+      self.tableView.reloadData()
+    }
   }
   
   func show(error: Error) {

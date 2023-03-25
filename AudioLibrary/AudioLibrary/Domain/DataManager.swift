@@ -13,7 +13,6 @@ protocol DataManagerTraits {
   var local: AudioLibraryLocalWorkerTraits {get}
   
   func getSongs(onFetch: @escaping (Response<[Song]>) -> Void)
-  func downloadSong(withURL songURL: URL, onDownload: @escaping (Response<Data>) -> Void)
 }
 
 // MARK: - Default DataManager which access local and network worker.
@@ -25,21 +24,14 @@ final class AudioLibraryDataManager: DataManagerTraits {
     local.getSongs { result in
       if case Result.success(let songs) = result {
         onFetch(.local(songs))
+      } else {
+        self.network.getSongs { result in
+          if case Result.success(let songs) = result {
+            SongsCoreDataHelper().save(songs: songs)
+          }
+          onFetch(result.convert())
+        }
       }
-    }
-    network.getSongs { result in
-      onFetch(result.convert())
-    }
-  }
-  
-  func downloadSong(withURL songURL: URL, onDownload: @escaping (Response<Data>) -> Void) {
-    local.downloadSong(withURL: songURL) { result in
-      if case Result.success(let song) = result {
-        onDownload(.local(song))
-      }
-    }
-    network.downloadSong(withURL: songURL) { result in
-      onDownload(result.convert())
     }
   }
 }

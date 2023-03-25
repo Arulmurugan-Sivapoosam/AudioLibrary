@@ -65,6 +65,7 @@ extension Song {
       let songDestinationURL = appInternalMusic.appendingPathComponent(name)
       try song.write(to: songDestinationURL)
       self.songLocation = songDestinationURL.path
+      SongsCoreDataHelper().update(songLocalPath: self.songLocation, to: self)
     } catch let error {
       print("Eror when writing songs", error.localizedDescription)
     }

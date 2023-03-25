@@ -8,16 +8,14 @@
 import Foundation
 
 protocol AudioLibraryLocalWorkerTraits {
-  func getSongs(onFetch: @escaping (Result<[Song], Error>) -> Void)
-  func downloadSong(withURL songURL: URL, onDownload: @escaping (Result<Data, Error>) -> Void)
+  func getSongs(onFetch: @escaping (Result<[Song], CoreDataError>) -> Void)
 }
 
 final class AudioLibraryLocalWorker: AudioLibraryLocalWorkerTraits {
-  func getSongs(onFetch: @escaping (Result<[Song], Error>) -> Void) {
-    
-  }
   
-  func downloadSong(withURL songURL: URL, onDownload: @escaping (Result<Data, Error>) -> Void) {
-    
-  }
+  private let songsCoreDataHelper: SongsCoreDataHelper = .init()
+  
+  func getSongs(onFetch: @escaping (Result<[Song], CoreDataError>) -> Void) {
+    songsCoreDataHelper.getSongs(onFetch: onFetch)
+  }  
 }

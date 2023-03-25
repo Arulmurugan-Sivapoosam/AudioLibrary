@@ -25,6 +25,9 @@
 		CFBCF21629CCBBBC009491DB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF21529CCBBBC009491DB /* Extensions.swift */; };
 		F706AA4129CDC83400DDE38F /* SongTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F706AA4029CDC83400DDE38F /* SongTableCell.swift */; };
 		F706AA4329CE034200DDE38F /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F706AA4229CE034200DDE38F /* ProgressView.swift */; };
+		F745BA9029CEB6CC007CE66A /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745BA8F29CEB6CC007CE66A /* CoreData.swift */; };
+		F745BA9229CEBA07007CE66A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745BA9129CEBA07007CE66A /* Constants.swift */; };
+		F77F046229CEC8530094D15E /* SongsCoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F046129CEC8530094D15E /* SongsCoreDataHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		CFBCF21529CCBBBC009491DB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F706AA4029CDC83400DDE38F /* SongTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableCell.swift; sourceTree = "<group>"; };
 		F706AA4229CE034200DDE38F /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		F745BA8F29CEB6CC007CE66A /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		F745BA9129CEBA07007CE66A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F77F046129CEC8530094D15E /* SongsCoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsCoreDataHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +177,8 @@
 				CF55794629CD7B3E002AD4F7 /* LocalWorker.swift */,
 				CF55794829CD7B50002AD4F7 /* NetworkWorker.swift */,
 				CF55794A29CD8341002AD4F7 /* HTTPRequest.swift */,
+				F745BA8F29CEB6CC007CE66A /* CoreData.swift */,
+				F77F046129CEC8530094D15E /* SongsCoreDataHelper.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 			children = (
 				CFBCF21329CCBB24009491DB /* BaseClass.swift */,
 				CFBCF21529CCBBBC009491DB /* Extensions.swift */,
+				F745BA9129CEBA07007CE66A /* Constants.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -327,8 +336,11 @@
 				CFBCF21629CCBBBC009491DB /* Extensions.swift in Sources */,
 				CFBCF21429CCBB24009491DB /* BaseClass.swift in Sources */,
 				CF55794729CD7B3E002AD4F7 /* LocalWorker.swift in Sources */,
+				F745BA9029CEB6CC007CE66A /* CoreData.swift in Sources */,
 				CF97DC2C29CCB7C4005D500A /* AppDelegate.swift in Sources */,
 				CF55794129CD7598002AD4F7 /* UseCase.swift in Sources */,
+				F745BA9229CEBA07007CE66A /* Constants.swift in Sources */,
+				F77F046229CEC8530094D15E /* SongsCoreDataHelper.swift in Sources */,
 				CF55794929CD7B50002AD4F7 /* NetworkWorker.swift in Sources */,
 				CFBCF21129CCB9B8009491DB /* SongListController.swift in Sources */,
 				CF97DC2E29CCB7C4005D500A /* SceneDelegate.swift in Sources */,
@@ -492,8 +504,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D5UTF57456;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AudioLibrary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -508,6 +522,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arul.music.AudioLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -522,8 +537,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D5UTF57456;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AudioLibrary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -538,6 +555,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arul.music.AudioLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

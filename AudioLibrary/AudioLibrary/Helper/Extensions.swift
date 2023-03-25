@@ -74,3 +74,24 @@ extension UITableView {
     return cell
   }
 }
+
+extension Array {
+  static var empty: Self { [] }
+}
+
+extension Optional where Wrapped: Defaultable {
+  var safelyUnwrap: Wrapped {
+    switch self {
+    case .none: return .defaultValue
+    case .some(let wrapped): return wrapped
+    }
+  }
+}
+
+protocol Defaultable {
+  static var defaultValue: Self { get }
+}
+
+extension String: Defaultable {
+  static var defaultValue: String {""}
+}
