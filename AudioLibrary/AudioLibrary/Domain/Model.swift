@@ -56,15 +56,18 @@ extension Song {
   
   func save(song: Data?) {
     guard let song else {return}
+    let folderName = "AudioPlayer"
     guard let documentDirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
-    let appInternalMusic = documentDirURL.appendingPathComponent("AudioPlayer")
+    let appInternalMusic = documentDirURL.appendingPathComponent(folderName)
     do {
       if !FileManager.default.fileExists(atPath: appInternalMusic.path) {
         try FileManager.default.createDirectory(at: appInternalMusic, withIntermediateDirectories: true, attributes: nil)
       }
       let songDestinationURL = appInternalMusic.appendingPathComponent(name)
-      try song.write(to: songDestinationURL)
-      self.songLocation = songDestinationURL.path
+      if !FileManager.default.fileExists(atPath: songDestinationURL.path) {
+        try song.write(to: songDestinationURL)
+      }
+      self.songLocation = folderName + "/" + self.name
       SongsCoreDataHelper().update(songLocalPath: self.songLocation, to: self)
     } catch let error {
       print("Eror when writing songs", error.localizedDescription)
@@ -82,8 +85,10 @@ extension AudioPlayer {
     do {
       try AVAudioSession.sharedInstance().setCategory(.playback)
       try AVAudioSession.sharedInstance().setActive(true)
-      if currentlyPlaying?.id != song.id {
-        self.player = try AVAudioPlayer(contentsOf: .init(fileURLWithPath: song.songLocation))
+      if currentlyPlaying?.id != song.id,
+         var songPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+        songPath.appendPathComponent(song.songLocation)
+        self.player = try AVAudioPlayer(contentsOf: .init(fileURLWithPath: songPath.path))
       }
       guard let player else {return}
       player.play()
