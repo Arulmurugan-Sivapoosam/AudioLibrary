@@ -25,25 +25,6 @@ extension CoreDataStorable {
     NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as? CoreDataType
   }
   
-  func update<ValueType>(_ keyPath: ReferenceWritableKeyPath<CoreDataType, ValueType>, value: ValueType, where predicate: NSPredicate, onUpdate: @escaping (ObjectResult) -> Void) {
-    do {
-      objects(with: predicate, fetchLimit: 1) { result in
-        switch result {
-        case .success(let model):
-          if let firstModel = model.first {
-            firstModel[keyPath: keyPath] = value
-            saveContext()
-            onUpdate(.success(firstModel))
-          } else {
-            onUpdate(.failure(.nothingFound))
-          }
-        case .failure(let error):
-          onUpdate(.failure(.custom(error)))
-        }
-      }
-    }
-  }
-  
   func objects(with predicate: NSPredicate?, sorterDescriptor: [NSSortDescriptor] = .empty, fetchLimit: Int?, onFetch: @escaping (ObjectsResult) -> Void) {
     let fetchRequest = NSFetchRequest<CoreDataType>(entityName: entityName)
     fetchRequest.sortDescriptors = sorterDescriptor

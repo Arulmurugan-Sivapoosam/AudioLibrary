@@ -31,6 +31,7 @@
 		F790EE7A29D0786F00CD3A04 /* FileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F790EE7929D0786F00CD3A04 /* FileManagerTests.swift */; };
 		F790EE7D29D07D2800CD3A04 /* Song 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F790EE7B29D07D0D00CD3A04 /* Song 1.mp3 */; };
 		F790EE7F29D080A400CD3A04 /* DownloadableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F790EE7E29D080A400CD3A04 /* DownloadableTests.swift */; };
+		F790EE8129D09DDA00CD3A04 /* SongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F790EE8029D09DDA00CD3A04 /* SongTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		F790EE7929D0786F00CD3A04 /* FileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTests.swift; sourceTree = "<group>"; };
 		F790EE7B29D07D0D00CD3A04 /* Song 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Song 1.mp3"; sourceTree = "<group>"; };
 		F790EE7E29D080A400CD3A04 /* DownloadableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableTests.swift; sourceTree = "<group>"; };
+		F790EE8029D09DDA00CD3A04 /* SongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				CF97DC4529CCB7C4005D500A /* AudioLibraryTests.swift */,
 				F790EE7929D0786F00CD3A04 /* FileManagerTests.swift */,
 				F790EE7E29D080A400CD3A04 /* DownloadableTests.swift */,
+				F790EE8029D09DDA00CD3A04 /* SongTests.swift */,
 			);
 			path = AudioLibraryTests;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				F790EE7F29D080A400CD3A04 /* DownloadableTests.swift in Sources */,
 				CF97DC4629CCB7C4005D500A /* AudioLibraryTests.swift in Sources */,
 				F790EE7A29D0786F00CD3A04 /* FileManagerTests.swift in Sources */,
+				F790EE8129D09DDA00CD3A04 /* SongTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
