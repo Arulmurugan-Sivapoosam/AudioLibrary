@@ -18,16 +18,20 @@ final class SongTests: XCTestCase {
   }
   
   func testGetSongsAPI() {
-    let promise = expectation(description: "Downloading Songs")
+    let coreDataPromise = expectation(description: "Downloading data from local")
+    let networkPromise = expectation(description: "Downloading data from service")
     getSongs.execute(()) { response in
       switch response {
-      case .network(let songs), .local(let songs):
+      case .network(let songs):
         XCTAssertFalse(songs.isEmpty)
-        promise.fulfill()
+        networkPromise.fulfill()
+      case .local(let songs):
+        XCTAssertFalse(songs.isEmpty)
+        coreDataPromise.fulfill()
       case .failure:
         XCTFail("Error when downloading songs")
       }
     }
-    wait(for: [promise], timeout: 5)
+    wait(for: [coreDataPromise, networkPromise], timeout: 5)
   }
 }
