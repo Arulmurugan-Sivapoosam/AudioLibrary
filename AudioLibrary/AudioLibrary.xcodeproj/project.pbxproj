@@ -30,6 +30,7 @@
 		F77F046229CEC8530094D15E /* SongsCoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F046129CEC8530094D15E /* SongsCoreDataHelper.swift */; };
 		F790EE7A29D0786F00CD3A04 /* FileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F790EE7929D0786F00CD3A04 /* FileManagerTests.swift */; };
 		F790EE7D29D07D2800CD3A04 /* Song 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F790EE7B29D07D0D00CD3A04 /* Song 1.mp3 */; };
+		F790EE7F29D080A400CD3A04 /* DownloadableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F790EE7E29D080A400CD3A04 /* DownloadableTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		F77F046129CEC8530094D15E /* SongsCoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsCoreDataHelper.swift; sourceTree = "<group>"; };
 		F790EE7929D0786F00CD3A04 /* FileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTests.swift; sourceTree = "<group>"; };
 		F790EE7B29D07D0D00CD3A04 /* Song 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Song 1.mp3"; sourceTree = "<group>"; };
+		F790EE7E29D080A400CD3A04 /* DownloadableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				F790EE7B29D07D0D00CD3A04 /* Song 1.mp3 */,
 				CF97DC4529CCB7C4005D500A /* AudioLibraryTests.swift */,
 				F790EE7929D0786F00CD3A04 /* FileManagerTests.swift */,
+				F790EE7E29D080A400CD3A04 /* DownloadableTests.swift */,
 			);
 			path = AudioLibraryTests;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F790EE7F29D080A400CD3A04 /* DownloadableTests.swift in Sources */,
 				CF97DC4629CCB7C4005D500A /* AudioLibraryTests.swift in Sources */,
 				F790EE7A29D0786F00CD3A04 /* FileManagerTests.swift in Sources */,
 			);
