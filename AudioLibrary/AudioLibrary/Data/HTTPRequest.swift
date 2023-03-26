@@ -54,9 +54,12 @@ extension NetworkManager {
 }
 
 // MARK: - Download manager downloads the data and notifies the fraction at real time.
-class NetworkDownloadManager: NSObject, URLSessionDownloadDelegate {
-  var didChangeFraction: ((Float) -> Void)?
-  var didDownload: ((Data?) -> Void)?
+class NetworkDownloadManager: NSObject, URLSessionDownloadDelegate {  
+  private weak var delegate: DownloadableDelegate?
+  
+  init(delegate: DownloadableDelegate) {
+    self.delegate = delegate
+  }
   
   func downloadData(from urlStr: String) {
     guard let url = URL(string: urlStr) else {return}
@@ -67,12 +70,13 @@ class NetworkDownloadManager: NSObject, URLSessionDownloadDelegate {
   
   func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
     let reader = try? FileHandle(forReadingFrom: location)
-    let data = reader?.readDataToEndOfFile()
-    didDownload?(data)
+    if let data = reader?.readDataToEndOfFile() {
+      delegate?.didCompleteDownloading(data: data)
+    }
   }
   
   func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
     let fraction = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-    didChangeFraction?(fraction)
+    delegate?.didDownload(fraction: fraction)
   }
 }

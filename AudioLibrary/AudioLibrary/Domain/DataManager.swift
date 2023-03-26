@@ -24,14 +24,13 @@ final class AudioLibraryDataManager: DataManagerTraits {
     local.getSongs { result in
       if case Result.success(let songs) = result {
         onFetch(.local(songs))
-      } else {
-        self.network.getSongs { result in
-          if case Result.success(let songs) = result {
-            SongsCoreDataHelper().save(songs: songs)
-          }
-          onFetch(result.convert())
-        }
       }
+    }
+    network.getSongs { result in
+      if case Result.success(let songs) = result {
+        SongsCoreDataHelper().save(songs: songs)
+      }
+      onFetch(result.convert())
     }
   }
 }

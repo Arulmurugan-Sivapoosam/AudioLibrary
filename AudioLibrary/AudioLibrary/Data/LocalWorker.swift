@@ -12,10 +12,7 @@ protocol AudioLibraryLocalWorkerTraits {
 }
 
 final class AudioLibraryLocalWorker: AudioLibraryLocalWorkerTraits {
-  
-  private let songsCoreDataHelper: SongsCoreDataHelper = .init()
-  
   func getSongs(onFetch: @escaping (Result<[Song], CoreDataError>) -> Void) {
-    songsCoreDataHelper.getSongs(onFetch: onFetch)
+    SongsCoreDataHelper().getSongs(onFetch: onFetch)
   }  
 }

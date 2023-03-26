@@ -22,7 +22,7 @@ final class SongTableCell: BaseTableCell {
   func update(song: Song) {
     self.song = song
     songNameLabel.text = song.name
-    updateState(of: song)
+    updateActionButtonIcon()
     listenToDownloadIfNeeded()
   }
   
@@ -72,8 +72,10 @@ final class SongTableCell: BaseTableCell {
 
 // MARK: - State handling
 extension SongTableCell {
-  func updateState(of song: Song) {
-    songActionButton.setImage(.init(named: song.state.icon), for: .normal)
+  func updateActionButtonIcon() {
+    if let assetName = song?.state.icon {
+      songActionButton.setImage(.init(named: assetName), for: .normal)
+    }
   }
   
   private func changeState() {
@@ -89,7 +91,7 @@ extension SongTableCell {
       performPlayer?(.pause)
     case .downloading: break
     }
-    updateState(of: song)
+    updateActionButtonIcon()
     listenToDownloadIfNeeded()
   }
   
@@ -98,13 +100,7 @@ extension SongTableCell {
     guard let song,
       song.state == .downloading else { return }
     update(downloadFraction: song.downloadedFraction)
-    song.didDownload = { songData in
-      self.updateProgressViewState()
-      self.updateState(of: song)
-    }
-    song.didUpdateFraction = { fraction in
-      self.update(downloadFraction: fraction)
-    }
+    song.downloadDelegate = self
   }
   
   private func update(downloadFraction: Float) {
@@ -117,13 +113,25 @@ extension SongTableCell {
   }
 }
 
+// MARK: - DownloadableDelegate methods
+extension SongTableCell: DownloadableDelegate {
+  func didDownload(fraction: Float) {
+    update(downloadFraction: fraction)
+  }
+  
+  func didCompleteDownloading(data: Data) {
+    updateActionButtonIcon()
+    updateProgressViewState()
+  }
+}
+
 private extension Song.State {
-  var icon: String {
+  var icon: String? {
     switch self {
     case .yetToDownload: return "download"
     case .downloaded, .paused: return "play"
     case .playing: return "pause"
-    case .downloading: return ""
+    case .downloading: return nil
     }
   }
 }

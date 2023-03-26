@@ -25,7 +25,7 @@ final class SongListController: BaseController {
       if previouslyPlayedSong.state == .playing {
         previouslyPlayedSong.state = .paused
         let cell = tableView.cellForRow(at: .init(row: oldValue, section: .zero)) as? SongTableCell
-        cell?.updateState(of: previouslyPlayedSong)
+        cell?.updateActionButtonIcon()
       }
     }
   }
@@ -38,6 +38,7 @@ final class SongListController: BaseController {
     view.addSubview(errorLabel)
     errorLabel.centerHorizontally()
     errorLabel.centerVertically()
+    errorLabel.isHidden = true
   }
   
   private func prepareTable() {

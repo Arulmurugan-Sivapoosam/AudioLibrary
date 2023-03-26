@@ -9,7 +9,6 @@ import Foundation
 
 protocol AudioLibraryNetworkWorkerTraits {
   func getSongs(onFetch: @escaping (Result<[Song], NetworkError>) -> Void)
-  func downloadSong(withURL songURL: URL, onDownload: @escaping (Result<Data, Error>) -> Void)
 }
 
 final class AudioLibraryNetworkWorker: AudioLibraryNetworkWorkerTraits {
@@ -24,9 +23,5 @@ final class AudioLibraryNetworkWorker: AudioLibraryNetworkWorkerTraits {
         onFetch(.failure(error))
       }
     }
-  }
-  
-  func downloadSong(withURL songURL: URL, onDownload: @escaping (Result<Data, Error>) -> Void) {
-    
-  }
+  }  
 }

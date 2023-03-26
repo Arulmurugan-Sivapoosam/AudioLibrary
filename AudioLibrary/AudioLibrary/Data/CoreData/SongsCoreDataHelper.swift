@@ -29,17 +29,8 @@ final class SongsCoreDataHelper: CoreDataStorable {
       localSong.name = song.name
       localSong.position = Int64(position)
       localSong.songURL = song.audioURL
-      localSong.localPath = localSong.localPath ?? song.songLocation
       self.saveContext()
     })
-  }
-  
-  func update(songLocalPath: String, to song: Song) {
-    update(\.localPath, value: songLocalPath, where: .init(format: "id == %@", song.id)) { result in
-      if case Result.failure(let error) = result {
-        print("failed to writed songpath", error.localizedDescription)
-      }
-    }
   }
   
   func getSongs(onFetch: @escaping (Result<[Song], CoreDataError>) -> Void) {
@@ -55,7 +46,6 @@ private extension Song {
       name: coreDataModel.name.safelyUnwrap,
       audioURL: coreDataModel.songURL.safelyUnwrap
     )
-    self.songLocation = coreDataModel.localPath.safelyUnwrap
-    self.state = self.songLocation.isEmpty ? .yetToDownload : .downloaded
+    self.state = self.fileManagerURL == nil ? .yetToDownload : .downloaded
   }
 }
