@@ -1,7 +1,7 @@
 # AudioLibrary
 A simple AudioLibrary application to download and listen songs
 
-# Architecutre
+## Architecutre
 **Name:** VIP (Clean Architecture)
 
 **Layers of Architecture:**
