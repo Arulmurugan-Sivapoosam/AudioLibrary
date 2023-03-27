@@ -73,13 +73,3 @@ final class GetSongsList: UseCase, NetworkUseCase {
     dataManager.getSongs(onFetch: completion)
   }
 }
-
-
-final class DownloadSong: UseCase, NetworkUseCase {
-  typealias Request = String
-  typealias ResponseModel = Data
-  
-  func executeSync(_ request: String, completion: @escaping (Response<Data>) -> Void) {
-    
-  }
-}

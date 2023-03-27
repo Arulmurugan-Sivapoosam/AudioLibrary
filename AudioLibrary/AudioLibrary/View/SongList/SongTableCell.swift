@@ -59,7 +59,7 @@ final class SongTableCell: BaseTableCell {
   }
   
   override func setColors() {
-    songCardView.backgroundColor = UIColor(red: 0.58, green: 0.58, blue: 0.60, alpha: 1.00)
+    songCardView.backgroundColor = .lightGray
     songNameLabel.textColor = .white
   }
   
