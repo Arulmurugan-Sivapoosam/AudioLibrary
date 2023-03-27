@@ -48,3 +48,21 @@ extension Result {
 struct DataContainer<NestedData: Decodable>: Decodable {
   let data: NestedData
 }
+
+
+final class AudioLibraryMockDataManager: DataManagerTraits {
+  var network: AudioLibraryNetworkWorkerTraits = AudioLibraryMockNetworkWorker()
+  var local: AudioLibraryLocalWorkerTraits = AudioLibraryMockLocalWorker()
+  
+  func getSongs(onFetch: @escaping (Response<[Song]>) -> Void) {
+    local.getSongs { result in
+      if case Result.success(let songs) = result {
+        onFetch(.local(songs))
+      }
+    }
+    
+    network.getSongs { result in
+      onFetch(result.convert())
+    }
+  }
+}

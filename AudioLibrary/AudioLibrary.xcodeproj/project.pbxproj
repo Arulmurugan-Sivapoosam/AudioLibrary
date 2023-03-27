@@ -19,7 +19,6 @@
 		CF97DC3829CCB7C4005D500A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF97DC3729CCB7C4005D500A /* Assets.xcassets */; };
 		CF97DC4629CCB7C4005D500A /* AudioLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97DC4529CCB7C4005D500A /* AudioLibraryTests.swift */; };
 		CF97DC5029CCB7C4005D500A /* AudioLibraryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97DC4F29CCB7C4005D500A /* AudioLibraryUITests.swift */; };
-		CF97DC5229CCB7C4005D500A /* AudioLibraryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF97DC5129CCB7C4005D500A /* AudioLibraryUITestsLaunchTests.swift */; };
 		CFBCF21129CCB9B8009491DB /* SongListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF21029CCB9B8009491DB /* SongListController.swift */; };
 		CFBCF21429CCBB24009491DB /* BaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF21329CCBB24009491DB /* BaseClass.swift */; };
 		CFBCF21629CCBBBC009491DB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCF21529CCBBBC009491DB /* Extensions.swift */; };
@@ -68,7 +67,6 @@
 		CF97DC4529CCB7C4005D500A /* AudioLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLibraryTests.swift; sourceTree = "<group>"; };
 		CF97DC4B29CCB7C4005D500A /* AudioLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioLibraryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF97DC4F29CCB7C4005D500A /* AudioLibraryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLibraryUITests.swift; sourceTree = "<group>"; };
-		CF97DC5129CCB7C4005D500A /* AudioLibraryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLibraryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CFBCF21029CCB9B8009491DB /* SongListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListController.swift; sourceTree = "<group>"; };
 		CFBCF21329CCBB24009491DB /* BaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseClass.swift; sourceTree = "<group>"; };
 		CFBCF21529CCBBBC009491DB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				CF97DC4F29CCB7C4005D500A /* AudioLibraryUITests.swift */,
-				CF97DC5129CCB7C4005D500A /* AudioLibraryUITestsLaunchTests.swift */,
 			);
 			path = AudioLibraryUITests;
 			sourceTree = "<group>";
@@ -389,7 +386,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF97DC5029CCB7C4005D500A /* AudioLibraryUITests.swift in Sources */,
-				CF97DC5229CCB7C4005D500A /* AudioLibraryUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

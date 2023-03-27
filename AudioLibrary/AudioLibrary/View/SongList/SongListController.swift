@@ -7,14 +7,23 @@
 
 import UIKit
 
-final class SongListController: BaseController {
+class SongListController: BaseController {
   
   private let tableView: BaseTable = .init()
   private let loader: UIActivityIndicatorView = .init(style: .large)
   private let errorLabel: UILabel = .init(frame: .zero)
   
-  private let getSongs: GetSongsList = .init()
+  fileprivate let getSongs: GetSongsList
   private var songs: [Song] = []
+  
+  init(dataManager: DataManagerTraits = AudioLibraryDataManager()) {
+    self.getSongs = .init(dataManager: dataManager)
+    super.init()
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   override var navigationTitle: String? {"Songs"}
   private lazy var audioPlayer: AudioPlayer = .init()
@@ -95,4 +104,15 @@ extension SongListController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 170 }
+}
+
+// MARK: - SongListController with mock data manager 
+final class MockSongListController: SongListController {
+  init() {
+    super.init(dataManager: AudioLibraryMockDataManager())
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 }

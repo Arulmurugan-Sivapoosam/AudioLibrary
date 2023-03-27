@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
       guard let windowScene = (scene as? UIWindowScene) else { return }
       let window = UIWindow(windowScene: windowScene)
-      window.rootViewController = UINavigationController(rootViewController: SongListController())
+      window.rootViewController = UINavigationController(rootViewController: CommandLine.isUITestingLaunch ? MockSongListController() : SongListController())
       self.window = window
       window.makeKeyAndVisible()
     }
@@ -57,3 +57,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+private extension CommandLine {
+  /// Property returns true if commandline arguments contains UITesting flag.
+  static var isUITestingLaunch: Bool {
+    arguments.contains("isUITesting")
+  }
+}
