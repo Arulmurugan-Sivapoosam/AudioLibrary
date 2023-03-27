@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: - Layouting extensions
 extension UIView {
   @discardableResult func align(_ type1: NSLayoutConstraint.Attribute,
                                 with view: UIView? = nil, on type2: NSLayoutConstraint.Attribute? = nil,
@@ -58,6 +59,7 @@ extension UIView {
   }
 }
 
+// MARK: - Reuseable extensions
 extension UITableViewCell {
   public static var reuseIdentifier: String { return String(describing: self) }
   static func register(to tableView: UITableView) {
@@ -79,6 +81,7 @@ extension Array {
   static var empty: Self { [] }
 }
 
+// MARK: - Optional extension to safely unwrap optionals.
 extension Optional where Wrapped: Defaultable {
   var safelyUnwrap: Wrapped {
     switch self {

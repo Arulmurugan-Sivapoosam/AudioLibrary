@@ -37,7 +37,6 @@ class NetworkManager {
 extension NetworkManager {
   enum Request {
     case getSongs
-    case downloadSong(String)
     
     fileprivate var urlRequest: URLRequest? {
       guard let url = URL(string: urlStr) else {return nil}
@@ -47,7 +46,6 @@ extension NetworkManager {
     private var urlStr: String {
       switch self {
       case .getSongs: return "https://gist.githubusercontent.com/Lenhador/a0cf9ef19cd816332435316a2369bc00/raw/a1338834fc60f7513402a569af09ffa302a26b63/Songs.json"
-      case .downloadSong(let songLocation): return songLocation
       }
     }
   }

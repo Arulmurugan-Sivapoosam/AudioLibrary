@@ -99,12 +99,8 @@ extension SongTableCell {
     updateProgressViewState()
     guard let song,
       song.state == .downloading else { return }
-    update(downloadFraction: song.downloadedFraction)
+    progressView.update(fraction: song.downloadedFraction)
     song.downloadDelegate = self
-  }
-  
-  private func update(downloadFraction: Float) {
-    progressView.update(fraction: downloadFraction)
   }
   
   private func updateProgressViewState() {
@@ -116,7 +112,7 @@ extension SongTableCell {
 // MARK: - DownloadableDelegate methods
 extension SongTableCell: DownloadableDelegate {
   func didDownload(fraction: Float) {
-    update(downloadFraction: fraction)
+    progressView.update(fraction: fraction)
   }
   
   func didCompleteDownloading(data: Data) {
