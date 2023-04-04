@@ -25,13 +25,3 @@ final class AudioLibraryNetworkWorker: AudioLibraryNetworkWorkerTraits {
     }
   }  
 }
-
-final class AudioLibraryMockNetworkWorker: AudioLibraryNetworkWorkerTraits {
-  func getSongs(onFetch: @escaping (Result<[Song], NetworkError>) -> Void) {
-    let songs: [Song] = [
-      Song(id: "0", name: "Song 1", audioURL: "https://drive.google.com/uc?export=download&id=16-NMvJH4aJSgDpM66RizWe2qjHOP6n8f"),
-      Song(id: "1", name: "Song 2", audioURL: "https://drive.google.com/uc?export=download&id=1N3EW3CeY1v1L1bM4CtO5Fux1CYm5ZTLe")
-    ]
-    onFetch(.success(songs))
-  }
-}

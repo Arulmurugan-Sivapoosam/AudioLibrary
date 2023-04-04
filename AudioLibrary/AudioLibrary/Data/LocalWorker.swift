@@ -16,9 +16,3 @@ final class AudioLibraryLocalWorker: AudioLibraryLocalWorkerTraits {
     SongsCoreDataHelper().getSongs(onFetch: onFetch)
   }  
 }
-
-final class AudioLibraryMockLocalWorker: AudioLibraryLocalWorkerTraits {
-  func getSongs(onFetch: @escaping (Result<[Song], CoreDataError>) -> Void) {
-    onFetch(.success(.empty))
-  }
-}
