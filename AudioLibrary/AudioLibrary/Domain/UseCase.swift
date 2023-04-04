@@ -7,7 +7,7 @@
 
 import Foundation
 
-private let bgQueue = DispatchQueue(label: "OSlashUtilities", qos: .background)
+private let bgQueue = DispatchQueue(label: "Domain_Queue", qos: .background)
 
 // MARK: - DomainLayer that converts Threads between View - Domain - Data layers.
 protocol NetworkUseCase: AnyObject {
